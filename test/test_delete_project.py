@@ -19,4 +19,5 @@ def test_delete_some_project(app, db, check_ui, config):
 
     if check_ui:
         clean_new_projects = map(clean, new_projects)
-        assert sorted(clean_new_projects, key=Project.id_or_max) == sorted(app.project.get_project_list(), key=Project.id_or_max)
+        assert sorted(clean_new_projects, key=Project.id_or_max) == sorted(app.project.get_project_list(),
+                                                                           key=Project.id_or_max)

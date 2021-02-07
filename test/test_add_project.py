@@ -16,4 +16,5 @@ def test_add_project(app, json_project, check_ui, config):
                        description=cleaning_project.description.strip())
     if check_ui:
         clean_new_projects = map(clean, new_projects)
-        assert sorted(clean_new_projects, key=Project.id_or_max) == sorted(app.project.get_project_list(), key=Project.id_or_max)
+        assert sorted(clean_new_projects, key=Project.id_or_max) == sorted(app.project.get_project_list(),
+                                                                           key=Project.id_or_max)
