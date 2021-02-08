@@ -9,13 +9,15 @@ class SoapHelper:
     def __init__(self, app):
         self.app = app
 
-    def can_login(self, username, password):
-        client = Client("http://localhost/mantisbt-2.24.4/api/soap/mantisconnect.php?wsdl")
-        try:
-            client.service.mc_login(username, password)
-            return True
-        except WebFault:
-            return False
+    def ensure_user_exists(self, username, password):
+        soap_config = self.app.config['soap']
+        session = SoapHelper.Session(
+            soap_config['host'], soap_config['port'], soap_config['username'], soap_config['password'])
+        if session.is_users_registered(username):
+            session.reset_password(username, password)
+        else:
+            session.create_user(username, password)
+        session.quit()
 
     def get_project_list(self, username, password):
         client = Client("http://localhost/mantisbt-2.24.4/api/soap/mantisconnect.php?wsdl")
