@@ -13,17 +13,12 @@
   "ftp": {
     "host": "localhost",
     "username": "mantis",
-    "password": "mantis"
-  },
+    "password": "mantis",
+ },
   "james": {
     "host": "localhost",
     "port": 4555,
     "username": "root",
-    "password": "root"
-  },
-  "soap": {
-    "baseURL": "http://localhost/mantisbt-2.24.4/",
-    "username": "administrator",
     "password": "root"
   }
 }
